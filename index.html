@@ -751,7 +751,31 @@ $("#logout").onclick=logout;
 $("#logoutGate").onclick=logout;
 
 
+
 $("#login").onclick=async()=>{
+  const btn=$("#login");
+
+  if(auth.currentUser){
+    $("#gateStatus").textContent=
+      "Conta conectada. Verificando autorização...";
+    await verificarADM(auth.currentUser);
+    return;
+  }
+
+  btn.disabled=true;
+  $("#gateStatus").textContent="Entrando com Google...";
+
+  try{
+    const result=await signInWithPopup(auth,provider);
+    await verificarADM(result.user);
+  }catch(e){
+    $("#gateStatus").textContent=
+      "Erro no login: "+(e.code||e.message);
+  }finally{
+    btn.disabled=false;
+  }
+};
+
   if(auth.currentUser){
     $("#gateStatus").textContent =
       "Conta Google conectada. Verificando autorização ADM...";
