@@ -4,369 +4,631 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#0b1324">
+<meta name="theme-color" content="#101b30">
 <meta name="robots" content="noindex,nofollow">
 <title>CENTRAL ADM PRO</title>
 <style>
 :root{
---bg:#080e1a;
---sidebar:#101a2d;
---panel:#152138;
---panel2:#1c2b46;
---border:#30415e;
---text:#f4f8ff;
---muted:#a8b9d3;
---accent:#66a8ff;
---green:#48d6a0;
---orange:#ffb75c;
---red:#ff7777;
+  --bg:#09111f;
+  --side:#101d32;
+  --card:#172740;
+  --card2:#1d3150;
+  --border:#344b6c;
+  --text:#f3f7ff;
+  --muted:#abc0dc;
+  --blue:#4389f5;
+  --green:#47d3a1;
+  --red:#ff7d89;
 }
 *{box-sizing:border-box}
 body{
-margin:0;
-font-family:system-ui,-apple-system,Arial,sans-serif;
-background:radial-gradient(circle at 80% -20%,#1d3455,transparent 40%),var(--bg);
-color:var(--text)
+  margin:0;
+  font-family:system-ui,-apple-system,Arial,sans-serif;
+  color:var(--text);
+  background:radial-gradient(circle at 85% 0%,#203d66,transparent 35%),var(--bg);
 }
-button,input,select,textarea{font:inherit}
+button,input,select{font:inherit}
 button{cursor:pointer}
-button:disabled{opacity:.5;cursor:not-allowed}
-a{color:var(--accent);text-decoration:none}
+button:disabled{opacity:.55;cursor:wait}
+a{color:#9cc7ff;text-decoration:none}
 .hidden{display:none!important}
-.layout{display:grid;grid-template-columns:245px minmax(0,1fr);min-height:100vh}
-aside{
-background:var(--sidebar);
-border-right:1px solid var(--border);
-padding:22px 14px;
-position:sticky;top:0;height:100vh;
-overflow:auto
+.layout{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:240px minmax(0,1fr);
 }
-.logo{font-weight:1000;font-size:22px;margin:8px 10px 30px}
-.logo span{color:var(--accent)}
+aside{
+  background:var(--side);
+  border-right:1px solid var(--border);
+  padding:22px 13px;
+  position:sticky;
+  top:0;
+  height:100vh;
+  overflow:auto;
+}
+.logo{
+  font-size:22px;
+  font-weight:900;
+  padding:12px 8px 28px;
+}
+.logo span,.blue{color:#67a7ff}
 .nav{display:grid;gap:7px}
 .nav button{
-border:0;background:transparent;color:var(--muted);
-padding:14px;border-radius:12px;text-align:left;font-weight:700
+  background:transparent;
+  border:0;
+  border-radius:12px;
+  padding:14px;
+  color:var(--muted);
+  text-align:left;
+  font-weight:750;
 }
-.nav button.active,.nav button:hover{
-background:#27446d;color:white
+.nav button:hover,.nav button.active{
+  background:#284873;
+  color:white;
 }
-main{padding:26px;max-width:1600px;width:100%;min-width:0}
-.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.eyebrow{color:var(--accent);font-size:12px;font-weight:900;letter-spacing:1.5px}
-h1{font-size:clamp(26px,4vw,38px);margin:8px 0}
-h2{font-size:21px;margin:0 0 15px}
-h3{margin:10px 0}
-.muted{color:var(--muted);line-height:1.55}
+main{padding:26px;min-width:0}
+h1{font-size:clamp(25px,4vw,38px);margin:7px 0}
+h2{font-size:21px;margin:0 0 13px}
+p{line-height:1.55}
+.muted{color:var(--muted)}
 .small{font-size:12px}
-.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
+}
+.eyebrow{
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:1.5px;
+  color:#81b7ff;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+}
+.two{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+}
 .card{
-background:linear-gradient(155deg,#1b2a44,#111c30);
-border:1px solid var(--border);
-border-radius:19px;padding:20px;min-width:0
+  padding:20px;
+  background:linear-gradient(155deg,#1c2e4b,#111e33);
+  border:1px solid var(--border);
+  border-radius:19px;
+  min-width:0;
 }
-.metric strong{display:block;font-size:30px;margin:9px 0;overflow-wrap:anywhere}
+.metric strong{
+  display:block;
+  font-size:29px;
+  margin:10px 0;
+  overflow-wrap:anywhere;
+}
 .metric small{color:var(--muted)}
-.metric .value{color:#d8e9ff}
 .banner{
-background:linear-gradient(105deg,#1b477a,#263a76,#442d6d);
-border:1px solid #5577ac;border-radius:21px;
-padding:26px;margin:22px 0;
-display:flex;align-items:center;justify-content:space-between;gap:15px
+  margin:22px 0;
+  border:1px solid #6485c0;
+  border-radius:21px;
+  padding:26px;
+  background:linear-gradient(110deg,#174a83,#293f7a,#472f70);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px;
 }
-.banner h2{font-size:27px;margin:8px 0}
+.banner h2{font-size:26px;margin:8px 0}
 .btn{
-background:#397be1;color:#fff;border:1px solid #5a95ee;
-padding:11px 15px;border-radius:11px;font-weight:800;
-min-height:42px
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:43px;
+  border-radius:11px;
+  padding:11px 15px;
+  background:#397de4;
+  border:1px solid #609af4;
+  color:white;
+  font-weight:800;
+  text-decoration:none;
 }
-.btn:hover{filter:brightness(1.12)}
-.btn.secondary{background:#263a59;border-color:#405b82}
-.btn.danger{background:#682b39;border-color:#a74a5c}
-.btn.green{background:#176f55;border-color:#3cae89}
-.actions{display:flex;gap:9px;flex-wrap:wrap;margin:14px 0}
-.input{
-width:100%;background:#0e192b;color:white;
-border:1px solid #415675;border-radius:11px;padding:12px
+.btn:hover{filter:brightness(1.1)}
+.btn.secondary{
+  background:#273d60;
+  border-color:#49638b;
 }
-.input:focus{outline:2px solid #66a8ff77}
-label{display:grid;gap:6px;color:#dce7f8;font-weight:650}
-.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
-.full{grid-column:1/-1}
+.btn.danger{
+  background:#69303e;
+  border-color:#a85a68;
+}
+.actions{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  margin:12px 0;
+}
+.pill{
+  display:inline-block;
+  border-radius:99px;
+  padding:6px 10px;
+  background:#34445e;
+  color:#e2ecff;
+  font-size:11px;
+  font-weight:900;
+}
+.pill.ok{background:#17513f;color:#8ceac0}
+.pill.warn{background:#5b4426;color:#ffdc9b}
+.pill.error{background:#612d3d;color:#ffacb7}
 .section{display:none}
 .section.active{display:block}
-.tablewrap{overflow:auto}
-table{width:100%;border-collapse:collapse;min-width:650px}
-th,td{padding:13px 10px;text-align:left;border-bottom:1px solid var(--border);font-size:13px}
-th{color:#b6cbea;background:#1c2a43}
-.pill{
-display:inline-block;padding:6px 10px;border-radius:99px;
-font-size:11px;font-weight:900;background:#39435a;color:#e2eaff
-}
-.pill.ok{background:#154b3e;color:#83e6bc}
-.pill.warn{background:#554021;color:#ffdb91}
-.pill.error{background:#572a38;color:#ffaaaa}
 .project{
-display:flex;gap:15px;align-items:flex-start;
-border-bottom:1px solid var(--border);padding:17px 0
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  padding:17px 0;
+  border-bottom:1px solid var(--border);
 }
 .project:last-child{border-bottom:0}
 .projectIcon{
-width:52px;height:52px;border-radius:15px;display:grid;place-items:center;
-background:#294569;font-size:25px;flex-shrink:0
+  flex-shrink:0;
+  width:52px;
+  height:52px;
+  display:grid;
+  place-items:center;
+  font-size:25px;
+  background:#2b4a73;
+  border-radius:15px;
 }
 .projectBody{flex:1;min-width:0}
 .projectBody b{font-size:17px}
 .projectBody p{margin:6px 0}
-.projectActions{display:flex;gap:7px;flex-wrap:wrap}
-.notice{
-border:1px solid #526486;background:#23334c;
-padding:14px;border-radius:12px;color:#dce8fa;margin:12px 0
+.projectActions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:12px;
 }
-.empty{padding:28px;text-align:center;color:var(--muted)}
-.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:14px 0}
-.toolbar .input{max-width:330px}
+.notice{
+  padding:14px;
+  border:1px solid #536d91;
+  background:#253957;
+  border-radius:12px;
+  margin:13px 0;
+  color:#e0ebff;
+}
+.toolbar{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:14px 0;
+}
+.input{
+  background:#0c1a2d;
+  color:white;
+  border:1px solid #4b6486;
+  border-radius:11px;
+  padding:12px;
+  width:100%;
+  max-width:310px;
+}
+.tablewrap{overflow-x:auto}
+table{
+  width:100%;
+  min-width:640px;
+  border-collapse:collapse;
+}
+th,td{
+  padding:13px 10px;
+  border-bottom:1px solid var(--border);
+  text-align:left;
+  font-size:13px;
+}
+th{color:#c0d6f4;background:#203451}
+code{color:#a5ccff;overflow-wrap:anywhere}
 #gate{
-position:fixed;inset:0;z-index:999;
-background:radial-gradient(circle at 50% 0%,#23416d,#090f1b 65%);
-display:grid;place-items:center;padding:20px
+  position:fixed;
+  inset:0;
+  z-index:999;
+  background:radial-gradient(circle at 50% 0%,#23416c,#09111f 65%);
+  display:grid;
+  place-items:center;
+  padding:18px;
 }
 .gateCard{
-width:min(450px,100%);background:#17263f;
-border:1px solid #46658e;border-radius:24px;padding:30px;text-align:center
+  width:min(540px,100%);
+  background:#182943;
+  border:1px solid #52739e;
+  border-radius:27px;
+  padding:35px;
+  text-align:center;
 }
 .gateCard .symbol{font-size:55px}
-.gateCard button{width:100%;margin-top:10px}
-#gateStatus{overflow-wrap:anywhere}
-#gateUid{overflow-wrap:anywhere;font-size:12px;color:#b8cbea}
-#toast{
-position:fixed;right:15px;bottom:15px;z-index:1000;
-background:#203b5a;border:1px solid #6092d1;
-border-radius:13px;padding:15px;max-width:min(430px,90vw);
-box-shadow:0 12px 40px #0008
+.gateCard h1{font-size:clamp(28px,5vw,44px)}
+.gateCard .btn{
+  width:100%;
+  margin-top:11px;
+  font-size:17px;
+  min-height:54px;
 }
-@media(max-width:1100px){.grid{grid-template-columns:repeat(2,1fr)}}
+#gateStatus{
+  color:#b5d0fa;
+  overflow-wrap:anywhere;
+  min-height:45px;
+}
+#gateUid{
+  color:#b6cbea;
+  font-size:12px;
+  overflow-wrap:anywhere;
+}
+#toast{
+  position:fixed;
+  right:15px;
+  bottom:15px;
+  z-index:1000;
+  max-width:90vw;
+  background:#244469;
+  border:1px solid #73a5e5;
+  border-radius:12px;
+  padding:15px;
+  box-shadow:0 10px 35px #0008;
+}
+@media(max-width:1100px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+}
 @media(max-width:850px){
-.layout{display:block}
-aside{position:static;height:auto;padding:13px}
-.logo{margin:4px 6px 12px}
-.nav{display:flex;overflow:auto}
-.nav button{white-space:nowrap;padding:11px}
-main{padding:17px}
+  .layout{display:block}
+  aside{
+    position:static;
+    height:auto;
+    padding:12px;
+  }
+  .logo{padding:5px 7px 13px}
+  .nav{display:flex;overflow-x:auto}
+  .nav button{white-space:nowrap;padding:12px}
+  main{padding:17px}
 }
 @media(max-width:600px){
-.grid,.two,.form{grid-template-columns:1fr}
-.banner{flex-direction:column;align-items:flex-start;padding:19px}
-.banner h2{font-size:23px}
-.card{padding:15px}
-.project{flex-wrap:wrap}
-.projectActions{width:100%}
-.projectActions .btn{flex:1}
+  .grid,.two{grid-template-columns:1fr}
+  .banner{flex-direction:column;align-items:flex-start;padding:19px}
+  .banner h2{font-size:23px}
+  .card{padding:15px}
+  .project{flex-wrap:wrap}
+  .projectActions{width:100%}
+  .projectActions .btn{flex:1}
+  .gateCard{padding:25px 19px}
 }
 </style>
 </head>
+
 <body>
 
+<!-- LOGIN GOOGLE -->
 <div id="gate">
-<div class="gateCard">
-<div class="symbol">🛡️</div>
-<h1>CENTRAL ADM <span style="color:#66a8ff">PRO</span></h1>
-<p class="muted">Administração privada dos seus três projetos.</p>
-<button id="login" class="btn">Entrar com Google</button>
-<button id="logoutGate" class="btn secondary hidden">Trocar conta Google</button>
-<p id="gateStatus" class="muted">Aguardando autenticação.</p>
-<p id="gateUid"></p>
-</div>
+  <div class="gateCard">
+    <div class="symbol">🛡️</div>
+    <h1>CENTRAL ADM <span class="blue">PRO</span></h1>
+    <p class="muted">Administração privada dos seus três projetos.</p>
+
+    <button id="login" class="btn">
+      Entrar com Google
+    </button>
+
+    <button id="logoutGate" class="btn secondary hidden">
+      Trocar conta Google
+    </button>
+
+    <p id="gateStatus">Iniciando autenticação...</p>
+    <p id="gateUid"></p>
+  </div>
 </div>
 
+<!-- PAINEL -->
 <div class="layout">
+
 <aside>
-<div class="logo">◈ CENTRAL <span>ADM</span></div>
-<nav class="nav">
-<button class="active" data-tab="dashboard">◫ Panorama</button>
-<button data-tab="projects">▣ Projetos</button>
-<button data-tab="users">♙ Usuários</button>
-<button data-tab="activities">◷ Atividades</button>
-<button data-tab="finance">＄ Financeiro</button>
-<button data-tab="settings">⚙ Configurações</button>
-</nav>
-<p class="muted small" style="margin:25px 10px">Acesso restrito a administradores autorizados.</p>
+  <div class="logo">◈ CENTRAL <span>ADM</span></div>
+
+  <nav class="nav">
+    <button class="active" data-tab="dashboard">◫ Panorama</button>
+    <button data-tab="projects">▣ Projetos</button>
+    <button data-tab="users">♙ Usuários</button>
+    <button data-tab="activities">◷ Atividades</button>
+    <button data-tab="finance">＄ Financeiro</button>
+    <button data-tab="settings">⚙ Configurações</button>
+  </nav>
+
+  <p class="muted small" style="margin:25px 10px">
+    Acesso exclusivo para administradores autorizados.
+  </p>
 </aside>
 
 <main>
+
 <div class="top">
-<div>
-<span class="eyebrow">CENTRAL ADMINISTRATIVA</span>
-<h1 id="pageTitle">Panorama</h1>
-<p class="muted" id="pageSubtitle">Controle unificado dos seus projetos.</p>
-</div>
-<div class="actions">
-<span class="pill ok" id="sessionPill">Autenticado</span>
-<button class="btn secondary" id="refresh">↻ Atualizar</button>
-<button class="btn danger" id="logout">Sair</button>
-</div>
+  <div>
+    <span class="eyebrow">CENTRAL ADMINISTRATIVA</span>
+    <h1 id="pageTitle">Panorama</h1>
+    <p class="muted" id="pageSubtitle">
+      Controle unificado dos três projetos.
+    </p>
+  </div>
+
+  <div class="actions">
+    <span class="pill ok" id="sessionPill">Autenticado</span>
+    <button class="btn secondary" id="refresh">↻ Atualizar</button>
+    <button class="btn danger" id="logout">Sair</button>
+  </div>
 </div>
 
+<!-- PANORAMA -->
 <section id="dashboard" class="section active">
-<div class="banner">
-<div>
-<span class="eyebrow" style="color:#d5e5ff">SEU CENTRO DE COMANDO</span>
-<h2>Três projetos. Uma central.</h2>
-<p>ANALISTA PRO · BUSINESS PRO · GAMING PRO</p>
-</div>
-<span class="pill">CENTRAL ADM V5</span>
-</div>
 
-<div class="grid">
-<div class="card metric">
-<small>Projetos configurados</small>
-<strong class="value">3</strong>
-<span class="pill ok">Catálogo</span>
-</div>
-<div class="card metric">
-<small>Usuários sincronizados</small>
-<strong class="value" id="metricUsers">—</strong>
-<span class="pill" id="metricUsersStatus">Verificando</span>
-</div>
-<div class="card metric">
-<small>Eventos sincronizados</small>
-<strong class="value" id="metricEvents">—</strong>
-<span class="pill" id="metricEventsStatus">Verificando</span>
-</div>
-<div class="card metric">
-<small>Receita sincronizada</small>
-<strong class="value" id="metricRevenue">—</strong>
-<span class="pill" id="metricRevenueStatus">Verificando</span>
-</div>
-</div>
+  <div class="banner">
+    <div>
+      <span class="eyebrow" style="color:#d9e8ff">
+        CENTRO DE COMANDO
+      </span>
+      <h2>Três projetos. Uma central.</h2>
+      <p>ANALISTA PRO · BUSINESS PRO · GAMING PRO</p>
+    </div>
+    <span class="pill">CENTRAL ADM V6</span>
+  </div>
 
-<div class="two" style="margin-top:18px">
-<div class="card">
-<h2>Projetos da Central</h2>
-<div id="dashboardProjects"></div>
-</div>
-<div class="card">
-<h2>Estado das integrações</h2>
-<div id="integrationOverview"></div>
-<div class="notice">
-A Central não acessa automaticamente outros bancos Firebase. Cada portal precisa enviar os registros autorizados ou disponibilizar uma API administrativa protegida.
-</div>
-</div>
-</div>
+  <div class="grid">
+    <div class="card metric">
+      <small>Projetos configurados</small>
+      <strong>3</strong>
+      <span class="pill ok">Cadastrados</span>
+    </div>
+
+    <div class="card metric">
+      <small>Usuários sincronizados</small>
+      <strong id="metricUsers">—</strong>
+      <span id="metricUsersStatus" class="pill">Verificando</span>
+    </div>
+
+    <div class="card metric">
+      <small>Atividades sincronizadas</small>
+      <strong id="metricEvents">—</strong>
+      <span id="metricEventsStatus" class="pill">Verificando</span>
+    </div>
+
+    <div class="card metric">
+      <small>Receita sincronizada</small>
+      <strong id="metricRevenue">—</strong>
+      <span id="metricRevenueStatus" class="pill">Verificando</span>
+    </div>
+  </div>
+
+  <div class="two" style="margin-top:18px">
+    <div class="card">
+      <h2>Seus projetos</h2>
+      <div id="dashboardProjects"></div>
+    </div>
+
+    <div class="card">
+      <h2>Integrações</h2>
+      <div id="integrationOverview"></div>
+
+      <div class="notice">
+        Os dados dos outros projetos precisam ser enviados
+        à Central por integrações autorizadas.
+        O login ADM não fornece acesso automático
+        aos bancos de outros aplicativos.
+      </div>
+    </div>
+  </div>
+
 </section>
 
+<!-- PROJETOS -->
 <section id="projects" class="section">
-<div class="card">
-<h2>Projetos administrados</h2>
-<p class="muted">Abra cada sistema e acompanhe a integração. Os dados existentes nos portais não serão alterados.</p>
-<div id="projectsList"></div>
-</div>
+  <div class="card">
+    <h2>Projetos administrados</h2>
+    <p class="muted">
+      Acesse cada portal sem modificar os dados existentes.
+    </p>
+    <div id="projectsList"></div>
+  </div>
 </section>
 
+<!-- USUÁRIOS -->
 <section id="users" class="section">
-<div class="card">
-<h2>Usuários sincronizados</h2>
-<p class="muted">Registros recebidos na coleção <code>portalUsers</code> do Firebase da Central. Não representa automaticamente todas as contas dos outros projetos.</p>
-<div class="toolbar">
-<input class="input" id="searchUsers" placeholder="Pesquisar usuário ou e-mail">
-<select class="input" id="filterUsers">
-<option value="">Todos os projetos</option>
-<option value="analista">ANALISTA PRO</option>
-<option value="business">BUSINESS PRO</option>
-<option value="gaming">GAMING PRO</option>
-</select>
-<button class="btn secondary" id="exportUsers">⬇ CSV</button>
-</div>
-<div id="usersState" class="notice">Aguardando dados.</div>
-<div class="tablewrap">
-<table>
-<thead><tr><th>Usuário</th><th>E-mail</th><th>Projeto</th><th>Provedor</th><th>Data</th></tr></thead>
-<tbody id="usersTable"></tbody>
-</table>
-</div>
-</div>
+  <div class="card">
+    <h2>Usuários sincronizados</h2>
+
+    <p class="muted">
+      Registros da coleção <code>portalUsers</code>.
+      A Central não lista automaticamente todas
+      as contas do Firebase Authentication de outros projetos.
+    </p>
+
+    <div class="toolbar">
+      <input id="searchUsers" class="input"
+        placeholder="Pesquisar nome ou e-mail">
+
+      <select id="filterUsers" class="input">
+        <option value="">Todos os projetos</option>
+        <option value="analista">ANALISTA PRO</option>
+        <option value="business">BUSINESS PRO</option>
+        <option value="gaming">GAMING PRO</option>
+      </select>
+
+      <button id="exportUsers" class="btn secondary">
+        Baixar CSV
+      </button>
+    </div>
+
+    <div id="usersState" class="notice">Aguardando consulta.</div>
+
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Usuário</th>
+            <th>E-mail</th>
+            <th>Projeto</th>
+            <th>Provedor</th>
+            <th>Data</th>
+          </tr>
+        </thead>
+        <tbody id="usersTable"></tbody>
+      </table>
+    </div>
+  </div>
 </section>
 
+<!-- ATIVIDADES -->
 <section id="activities" class="section">
-<div class="card">
-<h2>Histórico de atividades</h2>
-<p class="muted">Auditoria dos eventos recebidos em <code>portalEvents</code>.</p>
-<div class="toolbar">
-<input class="input" id="searchEvents" placeholder="Pesquisar evento">
-<select class="input" id="filterEvents">
-<option value="">Todos os projetos</option>
-<option value="analista">ANALISTA PRO</option>
-<option value="business">BUSINESS PRO</option>
-<option value="gaming">GAMING PRO</option>
-</select>
-<button class="btn secondary" id="exportEvents">⬇ CSV</button>
-</div>
-<div id="eventsState" class="notice">Aguardando dados.</div>
-<div class="tablewrap">
-<table>
-<thead><tr><th>Data</th><th>Projeto</th><th>Ação</th><th>Usuário</th><th>Detalhes</th></tr></thead>
-<tbody id="eventsTable"></tbody>
-</table>
-</div>
-</div>
+  <div class="card">
+    <h2>Histórico de atividades</h2>
+
+    <p class="muted">
+      Eventos recebidos na coleção <code>portalEvents</code>.
+    </p>
+
+    <div class="toolbar">
+      <input id="searchEvents" class="input"
+        placeholder="Pesquisar atividade">
+
+      <select id="filterEvents" class="input">
+        <option value="">Todos os projetos</option>
+        <option value="analista">ANALISTA PRO</option>
+        <option value="business">BUSINESS PRO</option>
+        <option value="gaming">GAMING PRO</option>
+      </select>
+
+      <button id="exportEvents" class="btn secondary">
+        Baixar CSV
+      </button>
+    </div>
+
+    <div id="eventsState" class="notice">Aguardando consulta.</div>
+
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Projeto</th>
+            <th>Ação</th>
+            <th>Usuário</th>
+            <th>Detalhes</th>
+          </tr>
+        </thead>
+        <tbody id="eventsTable"></tbody>
+      </table>
+    </div>
+  </div>
 </section>
 
+<!-- FINANCEIRO -->
 <section id="finance" class="section">
-<div class="grid">
-<div class="card metric">
-<small>Pagamentos registrados</small>
-<strong id="paymentCount">—</strong>
-</div>
-<div class="card metric">
-<small>Pagamentos confirmados</small>
-<strong id="paidCount">—</strong>
-</div>
-<div class="card metric">
-<small>Receita confirmada</small>
-<strong id="paidRevenue">—</strong>
-</div>
-<div class="card metric">
-<small>Pendências</small>
-<strong id="pendingCount">—</strong>
-</div>
-</div>
-<div class="card" style="margin-top:17px">
-<h2>Pagamentos dos projetos</h2>
-<p class="muted">Somente registros sincronizados na coleção <code>portalPayments</code>. A confirmação oficial de pagamentos continua sendo feita pelo backend de cada portal, não por este painel.</p>
-<div id="financeState" class="notice">Aguardando integração.</div>
-<div class="tablewrap">
-<table>
-<thead><tr><th>Projeto</th><th>Referência</th><th>Valor</th><th>Status</th><th>Data</th></tr></thead>
-<tbody id="paymentsTable"></tbody>
-</table>
-</div>
-</div>
+
+  <div class="grid">
+    <div class="card metric">
+      <small>Pagamentos registrados</small>
+      <strong id="paymentCount">—</strong>
+    </div>
+
+    <div class="card metric">
+      <small>Confirmados</small>
+      <strong id="paidCount">—</strong>
+    </div>
+
+    <div class="card metric">
+      <small>Receita confirmada</small>
+      <strong id="paidRevenue">—</strong>
+    </div>
+
+    <div class="card metric">
+      <small>Pendentes</small>
+      <strong id="pendingCount">—</strong>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:17px">
+    <h2>Pagamentos dos projetos</h2>
+
+    <p class="muted">
+      Dados da coleção <code>portalPayments</code>.
+      A confirmação oficial de Pix continua
+      sendo responsabilidade do backend de pagamento.
+    </p>
+
+    <div id="financeState" class="notice">
+      Aguardando integração.
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Projeto</th>
+            <th>Referência</th>
+            <th>Valor</th>
+            <th>Status</th>
+            <th>Data</th>
+          </tr>
+        </thead>
+        <tbody id="paymentsTable"></tbody>
+      </table>
+    </div>
+  </div>
+
 </section>
 
+<!-- CONFIGURAÇÕES -->
 <section id="settings" class="section">
-<div class="two">
-<div class="card">
-<h2>Conta administrativa</h2>
-<p><b>Nome:</b> <span id="adminName">—</span></p>
-<p><b>E-mail:</b> <span id="adminEmail">—</span></p>
-<p><b>UID:</b> <span id="adminUid" style="overflow-wrap:anywhere">—</span></p>
-<p><b>Autorização:</b> <span class="pill ok">ADM autorizado</span></p>
-<div class="actions">
-<button class="btn secondary" id="copyUid">Copiar UID</button>
-</div>
-</div>
-<div class="card">
-<h2>Segurança</h2>
-<p class="muted">Acesso restrito por autenticação Google e documento <code>admins/{uid}</code> com <code>active: true</code>.</p>
-<p class="muted">As regras do Firestore devem restringir a leitura das coleções administrativas. Esconder o painel no navegador não substitui essa proteção.</p>
-<p class="muted">Não coloque chaves secretas do Asaas, tokens de Worker ou credenciais privadas neste HTML.</p>
-</div>
-</div>
-<div class="card" style="margin-top:16px">
-<h2>Integrações dos projetos</h2>
-<div id="settingsIntegrations"></div>
-</div>
+
+  <div class="two">
+    <div class="card">
+      <h2>Conta administrativa</h2>
+
+      <p><b>Nome:</b> <span id="adminName">—</span></p>
+      <p><b>E-mail:</b> <span id="adminEmail">—</span></p>
+      <p><b>UID:</b> <span id="adminUid">—</span></p>
+
+      <p>
+        <b>Autorização:</b>
+        <span class="pill ok">ADM autorizado</span>
+      </p>
+
+      <button id="copyUid" class="btn secondary">
+        Copiar UID
+      </button>
+    </div>
+
+    <div class="card">
+      <h2>Segurança</h2>
+
+      <p class="muted">
+        Login Google e autorização pelo documento
+        <code>admins/{uid}</code>.
+      </p>
+
+      <p class="muted">
+        A Central reconhece os campos
+        <code>active</code> e <code>ative</code>,
+        desde que o valor seja booleano verdadeiro.
+      </p>
+
+      <p class="muted">
+        As regras do Firestore precisam proteger
+        as coleções administrativas.
+        Não coloque chaves secretas de pagamentos neste HTML.
+      </p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:17px">
+    <h2>Estado das integrações</h2>
+    <div id="settingsIntegrations"></div>
+  </div>
+
 </section>
 
 </main>
@@ -375,24 +637,41 @@ A Central não acessa automaticamente outros bancos Firebase. Cada portal precis
 <div id="toast" class="hidden"></div>
 
 <script type="module">
-import {initializeApp} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-import {
-getAuth,GoogleAuthProvider,signInWithPopup,
-signInWithRedirect,getRedirectResult,onAuthStateChanged,signOut
-} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
-import {
-getFirestore,doc,getDoc,collection,getDocs,query,limit,orderBy
-} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
-/* FIREBASE ORIGINAL DA CENTRAL ADM */
+import {initializeApp}
+from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
+  onAuthStateChanged,
+  signOut
+}
+from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  collection,
+  getDocs,
+  query,
+  limit
+}
+from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+/* FIREBASE CENTRAL ADM ORIGINAL */
 const firebaseConfig={
-apiKey:"AIzaSyATpHc54WPjdcixEvGaEa7Cupwn1BMCdAs",
-authDomain:"central-adm-f9b27.firebaseapp.com",
-projectId:"central-adm-f9b27",
-storageBucket:"central-adm-f9b27.firebasestorage.app",
-messagingSenderId:"801405753910",
-appId:"1:801405753910:web:11680618a76c31e4091697",
-measurementId:"G-96JSPD9TD1"
+  apiKey:"AIzaSyATpHc54WPjdcixEvGaEa7Cupwn1BMCdAs",
+  authDomain:"central-adm-f9b27.firebaseapp.com",
+  projectId:"central-adm-f9b27",
+  storageBucket:"central-adm-f9b27.firebasestorage.app",
+  messagingSenderId:"801405753910",
+  appId:"1:801405753910:web:11680618a76c31e4091697",
+  measurementId:"G-96JSPD9TD1"
 };
 
 const firebaseApp=initializeApp(firebaseConfig);
@@ -400,336 +679,580 @@ const auth=getAuth(firebaseApp);
 const db=getFirestore(firebaseApp);
 const provider=new GoogleAuthProvider();
 
-const $=s=>document.querySelector(s);
+const $=selector=>document.querySelector(selector);
+
 const projects=[
-{
-id:"analista",
-name:"ANALISTA PRO",
-icon:"📊",
-description:"Campeonatos, jogadores, liberações e análises.",
-url:"https://oanalistapro.github.io/ANALISTA-PRO.github.io/"
-},
-{
-id:"business",
-name:"BUSINESS PRO",
-icon:"💼",
-description:"Ferramentas empresariais, documentos e gestão.",
-url:"https://oanalistapro.github.io/BUSINESS-PRO/"
-},
-{
-id:"gaming",
-name:"GAMING PRO",
-icon:"🎮",
-description:"Ferramentas esports, campeonatos e publicidade.",
-url:"https://oanalistapro.github.io/GAMING-PRO/"
-}
+  {
+    id:"analista",
+    name:"ANALISTA PRO",
+    icon:"📊",
+    description:"Campeonatos, jogadores, análises e liberações.",
+    url:"https://oanalistapro.github.io/ANALISTA-PRO.github.io/"
+  },
+  {
+    id:"business",
+    name:"BUSINESS PRO",
+    icon:"💼",
+    description:"Ferramentas de negócios e administração.",
+    url:"https://oanalistapro.github.io/BUSINESS-PRO/"
+  },
+  {
+    id:"gaming",
+    name:"GAMING PRO",
+    icon:"🎮",
+    description:"Site de jogos, esports e ferramentas.",
+    url:"https://oanalistapro.github.io/GAMING-PRO/"
+  }
 ];
 
 let currentUser=null;
 let authorized=false;
+let authSequence=0;
+let loadingLogin=false;
+
 let users=[];
 let events=[];
 let payments=[];
+
 let collectionState={
-users:"pending",
-events:"pending",
-payments:"pending"
+  users:"pending",
+  events:"pending",
+  payments:"pending"
 };
 
 function node(tag,text,cls){
-const e=document.createElement(tag);
-if(text!==undefined)e.textContent=String(text);
-if(cls)e.className=cls;
-return e;
+  const e=document.createElement(tag);
+  if(text!==undefined)e.textContent=String(text);
+  if(cls)e.className=cls;
+  return e;
 }
 
 function toast(message){
-const e=$("#toast");
-e.textContent=message;
-e.classList.remove("hidden");
-clearTimeout(window.__admToastTimer);
-window.__admToastTimer=setTimeout(()=>e.classList.add("hidden"),5000);
+  const e=$("#toast");
+  e.textContent=message;
+  e.classList.remove("hidden");
+
+  clearTimeout(window.__admToastTimer);
+
+  window.__admToastTimer=setTimeout(()=>{
+    e.classList.add("hidden");
+  },4000);
 }
 
-function statusPill(status){
-const p=node("span",status==="ok"?"Sincronizado":status==="empty"?"Sem registros":status==="error"?"Erro de acesso":"Pendente","pill");
-p.classList.add(status==="ok"?"ok":status==="error"?"error":"warn");
-return p;
+function setGate(message){
+  $("#gateStatus").textContent=message;
 }
 
-function projectName(id){
-const s=String(id||"").toLowerCase();
-if(s.includes("analista"))return "ANALISTA PRO";
-if(s.includes("business")||s.includes("busi"))return "BUSINESS PRO";
-if(s.includes("gaming")||s.includes("jogo"))return "GAMING PRO";
-return id||"Não identificado";
+function setPill(id,status){
+  const e=$(id);
+
+  if(!e)return;
+
+  e.className="pill";
+
+  if(status==="ok"){
+    e.classList.add("ok");
+    e.textContent="Sincronizado";
+  }else if(status==="empty"){
+    e.classList.add("warn");
+    e.textContent="Sem registros";
+  }else if(status==="error"){
+    e.classList.add("error");
+    e.textContent="Erro de acesso";
+  }else{
+    e.textContent="Pendente";
+  }
 }
 
 function projectKey(value){
-const s=String(value||"").toLowerCase();
-if(s.includes("analista"))return "analista";
-if(s.includes("business")||s.includes("busi"))return "business";
-if(s.includes("gaming")||s.includes("jogo"))return "gaming";
-return "";
+  const s=String(value||"").toLowerCase();
+
+  if(s.includes("analista"))return "analista";
+  if(s.includes("business")||s.includes("busi"))return "business";
+  if(s.includes("gaming")||s.includes("jogo"))return "gaming";
+
+  return "";
+}
+
+function projectName(value){
+  const key=projectKey(value);
+  const found=projects.find(p=>p.id===key);
+  return found?.name||value||"Não identificado";
 }
 
 function dateText(value){
-if(!value)return "—";
-try{
-let d;
-if(typeof value.toDate==="function")d=value.toDate();
-else if(value.seconds!==undefined)d=new Date(value.seconds*1000);
-else d=new Date(value);
-return Number.isNaN(d.getTime())?"—":d.toLocaleString("pt-BR");
-}catch{return "—"}
+  if(!value)return "—";
+
+  try{
+    let d;
+
+    if(typeof value.toDate==="function"){
+      d=value.toDate();
+    }else if(value.seconds!==undefined){
+      d=new Date(value.seconds*1000);
+    }else{
+      d=new Date(value);
+    }
+
+    return Number.isNaN(d.getTime())
+      ?"—"
+      :d.toLocaleString("pt-BR");
+
+  }catch{
+    return "—";
+  }
 }
 
 function money(cents){
-return (Number(cents||0)/100).toLocaleString("pt-BR",{
-style:"currency",currency:"BRL"
-});
+  return (Number(cents||0)/100).toLocaleString("pt-BR",{
+    style:"currency",
+    currency:"BRL"
+  });
 }
 
 function row(cells){
-const tr=node("tr");
-cells.forEach(x=>tr.append(node("td",x??"—")));
-return tr;
+  const tr=node("tr");
+
+  cells.forEach(value=>{
+    tr.append(node("td",value??"—"));
+  });
+
+  return tr;
 }
 
-function emptyTable(tbody,count,message){
-const tr=node("tr");
-const td=node("td",message);
-td.colSpan=count;
-tr.append(td);
-tbody.replaceChildren(tr);
+function emptyTable(selector,count,message){
+  const tr=node("tr");
+  const td=node("td",message);
+  td.colSpan=count;
+  tr.append(td);
+  $(selector).replaceChildren(tr);
 }
 
-function renderProjectList(target,compact=false){
-const root=$(target);
-root.replaceChildren();
-projects.forEach(p=>{
-const item=node("div",undefined,"project");
-item.append(node("div",p.icon,"projectIcon"));
-const body=node("div",undefined,"projectBody");
-body.append(node("b",p.name),node("p",p.description,"muted"));
-const actions=node("div",undefined,"projectActions");
-const link=node("a","Abrir portal ↗","btn secondary");
-link.href=p.url;
-link.target="_blank";
-link.rel="noopener noreferrer";
-actions.append(link);
-if(!compact){
-const status=node("span","Integração administrativa pendente","pill warn");
-actions.append(status);
-}
-body.append(actions);
-item.append(body);
-root.append(item);
-});
+function renderProjects(target,compact=false){
+  const root=$(target);
+  root.replaceChildren();
+
+  projects.forEach(p=>{
+    const item=node("div",undefined,"project");
+    const icon=node("div",p.icon,"projectIcon");
+    const body=node("div",undefined,"projectBody");
+
+    body.append(
+      node("b",p.name),
+      node("p",p.description,"muted")
+    );
+
+    const actions=node("div",undefined,"projectActions");
+
+    const link=node("a","Abrir portal ↗","btn secondary");
+    link.href=p.url;
+    link.target="_blank";
+    link.rel="noopener noreferrer";
+
+    actions.append(link);
+
+    if(!compact){
+      actions.append(
+        node("span","Integração pendente","pill warn")
+      );
+    }
+
+    body.append(actions);
+    item.append(icon,body);
+    root.append(item);
+  });
 }
 
 function renderIntegrations(target){
-const root=$(target);
-root.replaceChildren();
-projects.forEach(p=>{
-const item=node("div",undefined,"project");
-item.append(node("div",p.icon,"projectIcon"));
-const body=node("div",undefined,"projectBody");
-body.append(
-node("b",p.name),
-node("p","Portal cadastrado. A sincronização de dados depende da integração do projeto com a Central.","muted")
-);
-item.append(body,statusPill("pending"));
-root.append(item);
-});
+  const root=$(target);
+  root.replaceChildren();
+
+  projects.forEach(p=>{
+    const item=node("div",undefined,"project");
+    const icon=node("div",p.icon,"projectIcon");
+    const body=node("div",undefined,"projectBody");
+
+    body.append(
+      node("b",p.name),
+      node(
+        "p",
+        "Portal cadastrado. Sincronização administrativa ainda depende de integração segura.",
+        "muted"
+      )
+    );
+
+    item.append(
+      icon,
+      body,
+      node("span","Pendente","pill warn")
+    );
+
+    root.append(item);
+  });
 }
 
 function renderUsers(){
-const q=$("#searchUsers").value.toLowerCase();
-const filter=$("#filterUsers").value;
-const visible=users.filter(x=>{
-const text=[x.displayName,x.email,x.portal,x.provider].join(" ").toLowerCase();
-return text.includes(q)&&(!filter||projectKey(x.portal)===filter);
-});
-const tbody=$("#usersTable");
-if(!visible.length){
-emptyTable(tbody,5,collectionState.users==="error"?"Não foi possível consultar os usuários.":"Nenhum usuário encontrado.");
-}else{
-tbody.replaceChildren(...visible.map(x=>row([
-x.displayName||"Usuário",
-x.email||"—",
-projectName(x.portal),
-x.provider||"—",
-dateText(x.createdAt)
-])));
-}
-$("#usersState").textContent=
-collectionState.users==="error"?"Falha de leitura. Confira as permissões do Firestore.":
-collectionState.users==="empty"?"Nenhum registro sincronizado até o momento.":
-"Exibindo "+visible.length+" registro(s) de até "+users.length+" carregados.";
+  const search=$("#searchUsers").value.toLowerCase();
+  const filter=$("#filterUsers").value;
+
+  const visible=users.filter(x=>{
+    const text=[
+      x.displayName,
+      x.email,
+      x.portal,
+      x.provider
+    ].join(" ").toLowerCase();
+
+    return text.includes(search)&&(
+      !filter||projectKey(x.portal)===filter
+    );
+  });
+
+  if(!visible.length){
+    emptyTable(
+      "#usersTable",
+      5,
+      collectionState.users==="error"
+        ?"Erro ao consultar usuários."
+        :"Nenhum usuário encontrado."
+    );
+  }else{
+    $("#usersTable").replaceChildren(
+      ...visible.map(x=>row([
+        x.displayName||"Usuário",
+        x.email||"—",
+        projectName(x.portal),
+        x.provider||"—",
+        dateText(x.createdAt)
+      ]))
+    );
+  }
+
+  $("#usersState").textContent=
+    collectionState.users==="error"
+      ?"Falha de acesso. Confira as regras do Firestore."
+    :collectionState.users==="empty"
+      ?"Nenhum usuário sincronizado."
+      :"Exibindo "+visible.length+" de "+users.length+" registro(s).";
 }
 
 function renderEvents(){
-const q=$("#searchEvents").value.toLowerCase();
-const filter=$("#filterEvents").value;
-const visible=events.filter(x=>{
-const text=[x.portal,x.action,x.userEmail,x.uid,x.details].join(" ").toLowerCase();
-return text.includes(q)&&(!filter||projectKey(x.portal)===filter);
-});
-const tbody=$("#eventsTable");
-if(!visible.length){
-emptyTable(tbody,5,collectionState.events==="error"?"Falha ao consultar eventos.":"Nenhuma atividade encontrada.");
-}else{
-tbody.replaceChildren(...visible.map(x=>row([
-dateText(x.createdAt),
-projectName(x.portal),
-x.action||"Evento",
-x.userEmail||x.uid||"—",
-typeof x.details==="string"?x.details:"—"
-])));
-}
-$("#eventsState").textContent=
-collectionState.events==="error"?"Falha de leitura. Confira as regras do Firestore.":
-collectionState.events==="empty"?"Ainda não foram recebidos eventos dos portais.":
-"Exibindo "+visible.length+" atividade(s).";
+  const search=$("#searchEvents").value.toLowerCase();
+  const filter=$("#filterEvents").value;
+
+  const visible=events.filter(x=>{
+    const text=[
+      x.portal,
+      x.action,
+      x.userEmail,
+      x.uid,
+      x.details
+    ].join(" ").toLowerCase();
+
+    return text.includes(search)&&(
+      !filter||projectKey(x.portal)===filter
+    );
+  });
+
+  if(!visible.length){
+    emptyTable(
+      "#eventsTable",
+      5,
+      collectionState.events==="error"
+        ?"Erro ao consultar atividades."
+        :"Nenhuma atividade encontrada."
+    );
+  }else{
+    $("#eventsTable").replaceChildren(
+      ...visible.map(x=>row([
+        dateText(x.createdAt),
+        projectName(x.portal),
+        x.action||"Evento",
+        x.userEmail||x.uid||"—",
+        typeof x.details==="string"?x.details:"—"
+      ]))
+    );
+  }
+
+  $("#eventsState").textContent=
+    collectionState.events==="error"
+      ?"Falha de acesso. Confira as regras do Firestore."
+    :collectionState.events==="empty"
+      ?"Nenhuma atividade sincronizada."
+      :"Exibindo "+visible.length+" atividade(s).";
 }
 
 function renderFinance(){
-const confirmed=payments.filter(x=>
-["paid","confirmed","received","active"].includes(String(x.status||"").toLowerCase())
-);
-const pending=payments.filter(x=>
-["pending","awaiting_payment","waiting"].includes(String(x.status||"").toLowerCase())
-);
-const total=confirmed.reduce((sum,x)=>{
-const value=x.amount_cents??x.amountCents??0;
-return sum+Math.max(0,Number(value)||0);
-},0);
+  const paidStatuses=[
+    "paid",
+    "confirmed",
+    "received"
+  ];
 
-$("#paymentCount").textContent=collectionState.payments==="error"?"—":payments.length;
-$("#paidCount").textContent=collectionState.payments==="error"?"—":confirmed.length;
-$("#paidRevenue").textContent=collectionState.payments==="error"?"—":money(total);
-$("#pendingCount").textContent=collectionState.payments==="error"?"—":pending.length;
+  const pendingStatuses=[
+    "pending",
+    "awaiting_payment",
+    "waiting"
+  ];
 
-$("#metricRevenue").textContent=collectionState.payments==="error"?"—":money(total);
-$("#metricRevenueStatus").replaceWith(statusPill(collectionState.payments));
-const pill=$("#dashboard .metric:nth-child(4) .pill");
-pill.id="metricRevenueStatus";
+  const confirmed=payments.filter(x=>
+    paidStatuses.includes(
+      String(x.status||"").toLowerCase()
+    )
+  );
 
-const tbody=$("#paymentsTable");
-if(!payments.length){
-emptyTable(tbody,5,collectionState.payments==="error"?"Erro ao consultar pagamentos.":"Nenhum pagamento sincronizado.");
-}else{
-tbody.replaceChildren(...payments.map(x=>row([
-projectName(x.portal),
-x.reference||x.id||"—",
-money(x.amount_cents??x.amountCents),
-x.status||"—",
-dateText(x.createdAt)
-])));
-}
-$("#financeState").textContent=
-collectionState.payments==="error"?"Acesso negado ou consulta indisponível.":
-collectionState.payments==="empty"?"Ainda não há pagamentos sincronizados.":
-"Mostrando "+payments.length+" registro(s) sincronizados.";
+  const pending=payments.filter(x=>
+    pendingStatuses.includes(
+      String(x.status||"").toLowerCase()
+    )
+  );
+
+  const total=confirmed.reduce((sum,x)=>{
+    return sum+Math.max(
+      0,
+      Number(x.amount_cents??x.amountCents??0)||0
+    );
+  },0);
+
+  const hasAccess=collectionState.payments!=="error";
+
+  $("#paymentCount").textContent=
+    hasAccess?payments.length:"—";
+
+  $("#paidCount").textContent=
+    hasAccess?confirmed.length:"—";
+
+  $("#paidRevenue").textContent=
+    hasAccess?money(total):"—";
+
+  $("#pendingCount").textContent=
+    hasAccess?pending.length:"—";
+
+  $("#metricRevenue").textContent=
+    hasAccess?money(total):"—";
+
+  setPill("#metricRevenueStatus",collectionState.payments);
+
+  if(!payments.length){
+    emptyTable(
+      "#paymentsTable",
+      5,
+      hasAccess
+        ?"Nenhum pagamento sincronizado."
+        :"Erro ao consultar pagamentos."
+    );
+  }else{
+    $("#paymentsTable").replaceChildren(
+      ...payments.map(x=>row([
+        projectName(x.portal),
+        x.reference||x.id||"—",
+        money(x.amount_cents??x.amountCents),
+        x.status||"—",
+        dateText(x.createdAt)
+      ]))
+    );
+  }
+
+  $("#financeState").textContent=
+    collectionState.payments==="error"
+      ?"Acesso negado ou consulta indisponível."
+    :collectionState.payments==="empty"
+      ?"Ainda não há pagamentos sincronizados."
+      :"Mostrando "+payments.length+" pagamento(s).";
 }
 
 function updateMetrics(){
-$("#metricUsers").textContent=collectionState.users==="error"?"—":users.length;
-$("#metricEvents").textContent=collectionState.events==="error"?"—":events.length;
+  $("#metricUsers").textContent=
+    collectionState.users==="error"?"—":users.length;
 
-const u=$("#metricUsersStatus");
-u.replaceWith(statusPill(collectionState.users));
-$("#dashboard .metric:nth-child(2) .pill").id="metricUsersStatus";
+  $("#metricEvents").textContent=
+    collectionState.events==="error"?"—":events.length;
 
-const e=$("#metricEventsStatus");
-e.replaceWith(statusPill(collectionState.events));
-$("#dashboard .metric:nth-child(3) .pill").id="metricEventsStatus";
+  setPill("#metricUsersStatus",collectionState.users);
+  setPill("#metricEventsStatus",collectionState.events);
 
-renderFinance();
+  renderFinance();
 }
 
-async function readCollection(name,ordered=false){
-try{
-const ref=collection(db,name);
-const snap=ordered?
-await getDocs(query(ref,orderBy("createdAt","desc"),limit(100))):
-await getDocs(query(ref,limit(100)));
-return {state:snap.empty?"empty":"ok",data:snap.docs.map(d=>({id:d.id,...d.data()}))};
-}catch(error){
-console.warn("Consulta "+name+":",error);
-return {state:"error",data:[]};
-}
+async function readCollection(name){
+  try{
+    const ref=collection(db,name);
+
+    const snapshot=await getDocs(
+      query(ref,limit(100))
+    );
+
+    const data=snapshot.docs.map(d=>({
+      ...d.data(),
+      id:d.id
+    }));
+
+    data.sort((a,b)=>{
+      const time=x=>{
+        const v=x.createdAt;
+        if(typeof v?.toMillis==="function")return v.toMillis();
+        if(v?.seconds!==undefined)return v.seconds*1000;
+        return new Date(v||0).getTime()||0;
+      };
+
+      return time(b)-time(a);
+    });
+
+    return {
+      state:snapshot.empty?"empty":"ok",
+      data
+    };
+
+  }catch(error){
+    console.warn("Consulta "+name,error);
+
+    return {
+      state:"error",
+      data:[]
+    };
+  }
 }
 
 async function refreshData(){
-if(!authorized||!currentUser)return;
-$("#refresh").disabled=true;
-try{
-const results=await Promise.all([
-readCollection("portalUsers"),
-readCollection("portalEvents",true),
-readCollection("portalPayments",true)
-]);
-users=results[0].data;
-events=results[1].data;
-payments=results[2].data;
-collectionState={
-users:results[0].state,
-events:results[1].state,
-payments:results[2].state
-};
-renderUsers();
-renderEvents();
-updateMetrics();
-toast("Consultas concluídas.");
-}finally{
-$("#refresh").disabled=false;
-}
+  if(!authorized||!currentUser)return;
+
+  const session=authSequence;
+  $("#refresh").disabled=true;
+
+  try{
+    const results=await Promise.all([
+      readCollection("portalUsers"),
+      readCollection("portalEvents"),
+      readCollection("portalPayments")
+    ]);
+
+    if(
+      session!==authSequence||
+      !authorized||
+      !currentUser
+    )return;
+
+    users=results[0].data;
+    events=results[1].data;
+    payments=results[2].data;
+
+    collectionState={
+      users:results[0].state,
+      events:results[1].state,
+      payments:results[2].state
+    };
+
+    renderUsers();
+    renderEvents();
+    updateMetrics();
+
+    toast("Dados atualizados.");
+
+  }finally{
+    $("#refresh").disabled=false;
+  }
 }
 
+/* NAVEGAÇÃO */
 const titles={
-dashboard:["Panorama","Visão geral dos três projetos."],
-projects:["Projetos","Gerencie os portais autorizados."],
-users:["Usuários","Contas sincronizadas com a Central."],
-activities:["Atividades","Histórico de eventos recebidos."],
-finance:["Financeiro","Pagamentos e receitas sincronizados."],
-settings:["Configurações","Acesso e proteção da Central ADM."]
+  dashboard:[
+    "Panorama",
+    "Visão geral dos três projetos."
+  ],
+  projects:[
+    "Projetos",
+    "Portais cadastrados na Central."
+  ],
+  users:[
+    "Usuários",
+    "Contas sincronizadas."
+  ],
+  activities:[
+    "Atividades",
+    "Histórico de eventos recebidos."
+  ],
+  finance:[
+    "Financeiro",
+    "Pagamentos sincronizados."
+  ],
+  settings:[
+    "Configurações",
+    "Conta e segurança administrativa."
+  ]
 };
 
 document.querySelectorAll("[data-tab]").forEach(button=>{
-button.onclick=()=>{
-document.querySelectorAll("[data-tab]").forEach(b=>b.classList.toggle("active",b===button));
-document.querySelectorAll(".section").forEach(s=>s.classList.toggle("active",s.id===button.dataset.tab));
-$("#pageTitle").textContent=titles[button.dataset.tab][0];
-$("#pageSubtitle").textContent=titles[button.dataset.tab][1];
-window.scrollTo(0,0);
-};
+  button.addEventListener("click",()=>{
+    document.querySelectorAll("[data-tab]").forEach(b=>{
+      b.classList.toggle("active",b===button);
+    });
+
+    document.querySelectorAll(".section").forEach(s=>{
+      s.classList.toggle(
+        "active",
+        s.id===button.dataset.tab
+      );
+    });
+
+    $("#pageTitle").textContent=
+      titles[button.dataset.tab][0];
+
+    $("#pageSubtitle").textContent=
+      titles[button.dataset.tab][1];
+
+    window.scrollTo(0,0);
+  });
 });
 
-function csv(data){
-return "\ufeff"+data.map(r=>r.map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(";")).join("\r\n");
+/* EXPORTAÇÃO */
+function csv(rows){
+  return "\ufeff"+rows.map(r=>
+    r.map(v=>
+      '"'+String(v??"").replace(/"/g,'""')+'"'
+    ).join(";")
+  ).join("\r\n");
 }
 
-function downloadCSV(name,rows){
-const blob=new Blob([csv(rows)],{type:"text/csv;charset=utf-8"});
-const url=URL.createObjectURL(blob);
-const a=document.createElement("a");
-a.href=url;
-a.download=name;
-a.click();
-setTimeout(()=>URL.revokeObjectURL(url),1000);
+function downloadCSV(filename,rows){
+  const blob=new Blob([csv(rows)],{
+    type:"text/csv;charset=utf-8"
+  });
+
+  const url=URL.createObjectURL(blob);
+  const link=document.createElement("a");
+
+  link.href=url;
+  link.download=filename;
+  link.click();
+
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
 
-$("#exportUsers").onclick=()=>downloadCSV("usuarios-central.csv",[
-["Nome","Email","Portal","Provedor","Data"],
-...users.map(x=>[x.displayName,x.email,x.portal,x.provider,dateText(x.createdAt)])
-]);
+$("#exportUsers").onclick=()=>{
+  downloadCSV("usuarios-central.csv",[
+    ["Nome","Email","Portal","Provedor","Data"],
+    ...users.map(x=>[
+      x.displayName,
+      x.email,
+      x.portal,
+      x.provider,
+      dateText(x.createdAt)
+    ])
+  ]);
+};
 
-$("#exportEvents").onclick=()=>downloadCSV("atividades-central.csv",[
-["Data","Portal","Ação","Usuário","Detalhes"],
-...events.map(x=>[dateText(x.createdAt),x.portal,x.action,x.userEmail||x.uid,x.details])
-]);
+$("#exportEvents").onclick=()=>{
+  downloadCSV("atividades-central.csv",[
+    ["Data","Portal","Ação","Usuário","Detalhes"],
+    ...events.map(x=>[
+      dateText(x.createdAt),
+      x.portal,
+      x.action,
+      x.userEmail||x.uid,
+      x.details
+    ])
+  ]);
+};
 
 $("#searchUsers").oninput=renderUsers;
 $("#filterUsers").onchange=renderUsers;
@@ -738,70 +1261,203 @@ $("#filterEvents").onchange=renderEvents;
 $("#refresh").onclick=refreshData;
 
 $("#copyUid").onclick=async()=>{
-try{
-await navigator.clipboard.writeText(currentUser?.uid||"");
-toast("UID copiado.");
-}catch{toast("Não foi possível copiar o UID.")}
+  try{
+    await navigator.clipboard.writeText(
+      currentUser?.uid||""
+    );
+    toast("UID copiado.");
+  }catch{
+    toast("Não foi possível copiar o UID.");
+  }
 };
 
-async function logout(){
-await signOut(auth);
+/* LOGIN E AUTORIZAÇÃO ADM */
+async function verificarADM(user){
+  if(!user)return;
+
+  const sequence=++authSequence;
+
+  currentUser=user;
+  authorized=false;
+
+  $("#gate").classList.remove("hidden");
+  $("#logoutGate").classList.remove("hidden");
+  $("#gateUid").textContent="UID: "+user.uid;
+
+  setGate("Verificando autorização no Firebase...");
+
+  try{
+    const reference=doc(db,"admins",user.uid);
+    const snapshot=await getDoc(reference);
+
+    if(sequence!==authSequence)return;
+
+    if(!snapshot.exists()){
+      setGate(
+        "Documento ADM não encontrado para este UID. "+
+        "Confira o ID exato em admins."
+      );
+      return;
+    }
+
+    const dados=snapshot.data();
+
+    /*
+      CORREÇÃO:
+      Aceita active ou ative.
+      Ambos precisam ser boolean true.
+      Não aceita texto "true".
+    */
+    const permitido=
+      dados.active===true||
+      dados.ative===true;
+
+    if(!permitido){
+      const campos=Object.keys(dados).join(", ");
+
+      setGate(
+        "Autorização não ativa. Campos encontrados: "+
+        (campos||"nenhum")+
+        ". Use active ou ative com valor boolean true."
+      );
+
+      return;
+    }
+
+    authorized=true;
+
+    $("#adminName").textContent=
+      user.displayName||"Administrador";
+
+    $("#adminEmail").textContent=
+      user.email||"—";
+
+    $("#adminUid").textContent=user.uid;
+
+    $("#sessionPill").textContent=
+      "● "+(
+        user.displayName?.split(" ")[0]||"ADM"
+      );
+
+    $("#gate").classList.add("hidden");
+
+    await refreshData();
+
+  }catch(error){
+    if(sequence!==authSequence)return;
+
+    console.error("Autorização ADM:",error);
+
+    setGate(
+      "Erro de autorização: "+
+      (error.code||error.message)
+    );
+  }
 }
+
+/* LOGIN GOOGLE: UMA ÚNICA FUNÇÃO */
+$("#login").onclick=async()=>{
+  if(loadingLogin)return;
+
+  if(auth.currentUser){
+    await verificarADM(auth.currentUser);
+    return;
+  }
+
+  loadingLogin=true;
+  $("#login").disabled=true;
+  setGate("Abrindo login Google...");
+
+  try{
+    const result=await signInWithPopup(auth,provider);
+    await verificarADM(result.user);
+
+  }catch(error){
+    const code=error.code||"";
+
+    if(
+      code==="auth/popup-blocked"||
+      code==="auth/operation-not-supported-in-this-environment"
+    ){
+      try{
+        await signInWithRedirect(auth,provider);
+        return;
+      }catch(redirectError){
+        setGate(
+          "Erro no redirecionamento: "+
+          (redirectError.code||redirectError.message)
+        );
+      }
+    }else if(code==="auth/popup-closed-by-user"){
+      setGate(
+        "A janela Google foi fechada. Clique para tentar novamente."
+      );
+    }else{
+      setGate(
+        "Erro no Google: "+
+        (error.code||error.message)
+      );
+    }
+
+  }finally{
+    loadingLogin=false;
+    $("#login").disabled=false;
+  }
+};
+
+/* SAIR */
+async function logout(){
+  try{
+    await signOut(auth);
+  }catch(error){
+    toast("Erro ao sair: "+error.message);
+  }
+}
+
 $("#logout").onclick=logout;
 $("#logoutGate").onclick=logout;
 
-
-
-$("#login").onclick=async()=>{
- const btn=$("#login");btn.disabled=true;
- $("#gateStatus").textContent="Conectando ao Google...";
- try{
-  if(auth.currentUser) await verificarADM(auth.currentUser);
-  else {const result=await signInWithPopup(auth,provider);await verificarADM(result.user);}
- }catch(e){
-  if(["auth/popup-blocked","auth/operation-not-supported-in-this-environment"].includes(e.code)){
-   try{await signInWithRedirect(auth,provider);return;}
-   catch(err){$("#gateStatus").textContent="Erro redirecionamento: "+(err.code||err.message);}
-  }else $("#gateStatus").textContent="Erro Google: "+(e.code||e.message);
- }finally{btn.disabled=false;}
-};
-
-getRedirectResult(auth).catch(e=>{
-$("#gateStatus").textContent="Erro no retorno do Google: "+(e.code||e.message);
-});
-
-let authSequence=0;
-async function verificarADM(user){
- if(!user)return;
- const sequence=++authSequence;currentUser=user;authorized=false;
- $("#gate").classList.remove("hidden");$("#logoutGate").classList.remove("hidden");
- $("#gateUid").textContent="UID: "+user.uid;
- $("#gateStatus").textContent="Verificando autorização ADM...";
- try{
-  const grant=await getDoc(doc(db,"admins",user.uid));
-  if(sequence!==authSequence)return;
-  if(!grant.exists()){$("#gateStatus").textContent="Documento admins/"+user.uid+" não encontrado.";return;}
-  const active=grant.data().active;
-  if(active!==true){$("#gateStatus").textContent="ADM não autorizado. active="+String(active)+" (tipo "+typeof active+"). No Firestore, use boolean true.";return;}
-  authorized=true;
-  $("#adminName").textContent=user.displayName||"Administrador";
-  $("#adminEmail").textContent=user.email||"—";
-  $("#adminUid").textContent=user.uid;
-  $("#sessionPill").textContent="● "+(user.displayName?.split(" ")[0]||"ADM");
-  $("#gate").classList.add("hidden");
-  await refreshData();
- }catch(e){if(sequence===authSequence)$("#gateStatus").textContent="Erro Firestore: "+(e.code||e.message);}
-}
+/* RESTAURAR SESSÃO */
 onAuthStateChanged(auth,user=>{
- ++authSequence;currentUser=user;authorized=false;
- if(!user){$("#gate").classList.remove("hidden");$("#gateStatus").textContent="Entre com sua conta Google.";$("#gateUid").textContent="";$("#logoutGate").classList.add("hidden");return;}
- verificarADM(user);
+  if(!user){
+    ++authSequence;
+    currentUser=null;
+    authorized=false;
+
+    $("#gate").classList.remove("hidden");
+    $("#logoutGate").classList.add("hidden");
+    $("#gateUid").textContent="";
+
+    setGate("Entre com sua conta Google.");
+    return;
+  }
+
+  if(
+    authorized&&
+    currentUser?.uid===user.uid
+  )return;
+
+  verificarADM(user);
 });
 
-renderProjectList("#dashboardProjects",true);
-renderProjectList("#projectsList");
+/* RETORNO DO GOOGLE */
+getRedirectResult(auth).catch(error=>{
+  console.error("Retorno Google:",error);
+
+  if(!auth.currentUser){
+    setGate(
+      "Erro no retorno do Google: "+
+      (error.code||error.message)
+    );
+  }
+});
+
+/* INICIALIZAÇÃO DO PAINEL */
+renderProjects("#dashboardProjects",true);
+renderProjects("#projectsList");
 renderIntegrations("#integrationOverview");
 renderIntegrations("#settingsIntegrations");
+
 </script>
 </body>
 </html>
