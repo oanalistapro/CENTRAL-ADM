@@ -1136,6 +1136,12 @@ async function refreshData(){
     events=results[1].data;
     payments=results[2].data;
 
+window.centralIntegrationEvents = events;
+
+if (typeof window.atualizarStatusIntegracoes === "function") {
+  window.atualizarStatusIntegracoes();
+}
+
     collectionState={
       users:results[0].state,
       events:results[1].state,
