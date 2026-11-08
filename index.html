@@ -1459,5 +1459,68 @@ renderIntegrations("#integrationOverview");
 renderIntegrations("#settingsIntegrations");
 
 </script>
+<!-- CENTRAL ADM PRO — STATUS AUTOMÁTICO DAS INTEGRAÇÕES -->
+<script>
+(function () {
+  "use strict";
+
+  const PROJETOS = {
+    analista: "ANALISTA PRO",
+    business: "BUSINESS PRO",
+    gaming: "GAMING PRO"
+  };
+
+  function atualizarStatusIntegracoes() {
+    const linhas = document.querySelectorAll(
+      "#integrationOverview .project, " +
+      "#settingsIntegrations .project"
+    );
+
+    linhas.forEach(linha => {
+      const nome = linha.querySelector(".projectBody b");
+      const descricao = linha.querySelector(".projectBody p");
+      const indicador = linha.querySelector(".pill");
+
+      if (!nome || !indicador) return;
+
+      const projeto = Object.keys(PROJETOS).find(
+        chave => nome.textContent.trim() === PROJETOS[chave]
+      );
+
+      if (!projeto) return;
+
+      const eventos = window.centralIntegrationEvents || [];
+      const conectado = eventos.some(
+        evento =>
+          String(evento.portal || "").toLowerCase() === projeto &&
+          evento.action === "integration_test"
+      );
+
+      indicador.textContent = conectado
+        ? "Conectado"
+        : "Pendente";
+
+      indicador.className = conectado
+        ? "pill ok"
+        : "pill warn";
+
+      if (descricao) {
+        descricao.textContent = conectado
+          ? "Conexão de teste confirmada. Sincronização completa ainda pendente."
+          : "Aguardando conexão com a Central ADM.";
+      }
+    });
+  }
+
+  window.atualizarStatusIntegracoes =
+    atualizarStatusIntegracoes;
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    atualizarStatusIntegracoes
+  );
+})();
+</script>
+
 </body>
 </html>
