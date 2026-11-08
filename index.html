@@ -750,7 +750,40 @@ await signOut(auth);
 $("#logout").onclick=logout;
 $("#logoutGate").onclick=logout;
 
+
 $("#login").onclick=async()=>{
+  if(auth.currentUser){
+    $("#gateStatus").textContent =
+      "Conta Google conectada. Verificando autorização ADM...";
+    return;
+  }
+
+  $("#login").disabled=true;
+  $("#gateStatus").textContent="Abrindo login Google...";
+
+  try{
+    await signInWithPopup(auth,provider);
+    $("#gateStatus").textContent =
+      "Login concluído. Verificando autorização...";
+  }catch(e){
+    if(e.code==="auth/popup-closed-by-user"){
+      $("#gateStatus").textContent =
+        "Janela fechada. Clique para tentar novamente.";
+    }else if(
+      e.code==="auth/popup-blocked" ||
+      e.code==="auth/operation-not-supported-in-this-environment"
+    ){
+      await signInWithRedirect(auth,provider);
+      return;
+    }else{
+      $("#gateStatus").textContent =
+        "Erro Google: "+(e.code||e.message);
+    }
+  }finally{
+    $("#login").disabled=false;
+  }
+};
+
 $("#login").disabled=true;
 $("#gateStatus").textContent="Abrindo login Google...";
 try{
