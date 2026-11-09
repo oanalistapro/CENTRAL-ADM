@@ -17,92 +17,175 @@ const app = getApp();
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-const projetos = {
-  business: {
-    nome: "BUSINESS PRO",
-    descricao: "Aguardando sincronização de dados."
+const projetos = [
+  {
+    id: "analista",
+    nome: "ANALISTA PRO",
+    documento: "analistaSync"
   },
-  gaming: {
+  {
+    id: "business",
+    nome: "BUSINESS PRO",
+    documento: "businessSync"
+  },
+  {
+    id: "gaming",
     nome: "GAMING PRO",
-    descricao: "Aguardando sincronização de dados."
+    documento: "gamingSync"
   }
-};
+];
 
-function atualizarStatus(id, conectado, descricao) {
+let sessao = 0;
+let autorizado = false;
+
+const estados = new Map();
+
+function atualizarProjeto(projeto, dados) {
+  const conectado = dados?.status === "connected";
+
+  estados.set(projeto.id, conectado);
+
   document.querySelectorAll(
+    "#projectsList .project, " +
     "#integrationOverview .project, " +
     "#settingsIntegrations .project"
   ).forEach(linha => {
     const nome = linha.querySelector(".projectBody b");
 
-    if (nome?.textContent.trim() !== projetos[id].nome) {
+    if (nome?.textContent.trim() !== projeto.nome) {
       return;
     }
 
-    const pill = linha.querySelector(".pill");
-    const p = linha.querySelector(".projectBody p");
+    const indicador = linha.querySelector(".pill");
 
-    if (pill) {
-      pill.textContent = conectado
+    if (indicador) {
+      indicador.textContent = conectado
         ? "Sincronizado"
         : "Pendente";
 
-      pill.className = conectado
+      indicador.className = conectado
         ? "pill ok"
         : "pill warn";
     }
 
-    if (p) p.textContent = descricao;
+    // Preserva a descrição e o botão Abrir portal
+    // da seção Projetos.
+    if (linha.closest("#projectsList")) return;
+
+    const descricao = linha.querySelector(".projectBody p");
+
+    if (descricao) {
+      if (conectado) {
+        const total = Number.isFinite(dados.usersCount)
+          ? `${dados.usersCount} usuário(s). `
+          : "";
+
+        descricao.textContent =
+          total + "Sincronização administrativa confirmada.";
+      } else {
+        descricao.textContent =
+          "Aguardando sincronização de dados.";
+      }
+    }
   });
 }
 
-async function consultar() {
-  const usuario = auth.currentUser;
-  if (!usuario) return;
+function aplicarEstados() {
+  for (const projeto of projetos) {
+    if (!estados.has(projeto.id)) continue;
 
-  const adminDoc = await getDoc(
-    doc(db, "admins", usuario.uid)
-  );
-
-  const dadosAdmin = adminDoc.exists()
-    ? adminDoc.data()
-    : {};
-
-  if (
-    dadosAdmin.active !== true &&
-    dadosAdmin.ative !== true
-  ) {
-    return;
+    atualizarProjeto(projeto, {
+      status: estados.get(projeto.id)
+        ? "connected"
+        : "pending"
+    });
   }
+}
 
-  for (const id of Object.keys(projetos)) {
+async function consultar() {
+  if (!autorizado || !auth.currentUser) return;
+
+  const tentativa = sessao;
+
+  for (const projeto of projetos) {
     try {
       const snap = await getDoc(
-        doc(db, "settings", id + "Sync")
+        doc(db, "settings", projeto.documento)
       );
 
-      const dados = snap.exists() ? snap.data() : {};
+      if (tentativa !== sessao || !autorizado) return;
 
-      const conectado = dados.status === "connected";
-
-      atualizarStatus(
-        id,
-        conectado,
-        conectado
-          ? "Sincronização administrativa confirmada."
-          : projetos[id].descricao
+      atualizarProjeto(
+        projeto,
+        snap.exists() ? snap.data() : null
       );
+
     } catch (erro) {
-      console.error("Integração " + id, erro);
+      console.error(
+        "Erro ao consultar " + projeto.nome,
+        erro
+      );
     }
   }
 }
 
-onAuthStateChanged(auth, usuario => {
-  if (usuario) consultar().catch(console.error);
+onAuthStateChanged(auth, async usuario => {
+  const tentativa = ++sessao;
+
+  autorizado = false;
+  estados.clear();
+
+  if (!usuario) return;
+
+  try {
+    const snap = await getDoc(
+      doc(db, "admins", usuario.uid)
+    );
+
+    if (tentativa !== sessao) return;
+
+    const dados = snap.exists() ? snap.data() : {};
+
+    autorizado =
+      dados.active === true ||
+      dados.ative === true;
+
+    if (autorizado) await consultar();
+
+  } catch (erro) {
+    console.error("Erro de autorização:", erro);
+  }
 });
 
-document.getElementById("refresh")
-  ?.addEventListener("click", () => {
-    consultar().catch(console.error);
+// Atualiza os indicadores se o painel
+// reconstruir os elementos da página.
+const observador = new MutationObserver(() => {
+  if (autorizado) aplicarEstados();
+});
+
+function iniciar() {
+  [
+    "projectsList",
+    "integrationOverview",
+    "settingsIntegrations"
+  ].forEach(id => {
+    const elemento = document.getElementById(id);
+
+    if (elemento) {
+      observador.observe(elemento, {
+        childList: true
+      });
+    }
   });
+
+  document.getElementById("refresh")
+    ?.addEventListener("click", () => {
+      consultar().catch(console.error);
+    });
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", iniciar);
+} else {
+  iniciar();
+}
